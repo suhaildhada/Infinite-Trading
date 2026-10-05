@@ -27,6 +27,7 @@ public class AbstractVillagerMixin {
 	@Inject(method = "notifyTrade", at = @At("TAIL"))
 	private void infinitetrading_resetAfterTrade(MerchantOffer offer, CallbackInfo ci) {
 		AbstractVillager abstractVillager = (AbstractVillager)(Object)this;
+		((MerchantOfferAccess) offer).infiniteTrading_setMerchantOfferOwner(abstractVillager);
 		if (!Util.hasInfiniteTrades(abstractVillager)) {
 			return;
 		}
